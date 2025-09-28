@@ -1,0 +1,139 @@
+:root {
+  --accent-x: linear-gradient(135deg, #ffb347, #ff7e5f);
+  --accent-o: linear-gradient(135deg, #7ee8fa, #4facfe);
+  --win-x: rgba(255, 126, 95, 0.35);
+  --win-o: rgba(79, 172, 254, 0.35);
+  --text: #222;
+  --muted: #666;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* Gradient background */
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #7ee8fa 0%, #eec0c6 100%);
+  padding: 20px;
+}
+
+/* App container */
+.app {
+  width: 100%;
+  max-width: 420px;
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Header */
+.app-header h1 {
+  margin: 0;
+  font-size: 1.8rem;
+}
+.subtitle {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+/* Board */
+.board {
+  margin: 16px auto;
+  width: 100%;
+  max-width: 360px;
+  aspect-ratio: 1/1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+.cell {
+  background: #f8f9fa;
+  border: none;
+  border-radius: 10px;
+  font-size: clamp(28px, 9vw, 56px);
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.cell.mark-x {
+  background: var(--accent-x);
+  color: #fff;
+}
+.cell.mark-o {
+  background: var(--accent-o);
+  color: #fff;
+}
+.cell.win {
+  box-shadow: 0 0 20px var(--win-x);
+}
+.cell.win.o {
+  box-shadow: 0 0 20px var(--win-o);
+}
+
+/* Controls */
+.status {
+  margin: 8px 0;
+  font-weight: bold;
+}
+.score {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+}
+.buttons {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+.btn {
+  border: none;
+  border-radius: 10px;
+  padding: 10px 14px;
+  cursor: pointer;
+  background: #3b82f6;
+  color: #fff;
+  font-weight: bold;
+}
+.btn.ghost {
+  background: transparent;
+  border: 1px solid #3b82f6;
+  color: #3b82f6;
+}
+.btn.big {
+  font-size: 1.1rem;
+  padding: 12px 18px;
+}
+
+/* Overlay (end screen) */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+.overlay.hidden {
+  display: none;
+}
+.overlay-content {
+  background: #fff;
+  padding: 24px;
+  border-radius: 14px;
+  text-align: center;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+.overlay-content h2 {
+  margin-top: 0;
+  margin-bottom: 16px;
+  font-size: 1.5rem;
+}
